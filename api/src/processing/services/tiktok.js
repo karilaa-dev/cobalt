@@ -2,14 +2,14 @@ import Cookie from "../cookie/cookie.js";
 
 import { extract, normalizeURL } from "../url.js";
 import { genericUserAgent } from "../../config.js";
-import { updateCookie } from "../cookie/manager.js";
+import { getCookie, updateCookie } from "../cookie/manager.js";
 import { createStream } from "../../stream/manage.js";
 import { convertLanguageCode } from "../../misc/language-codes.js";
 
 const shortDomain = "https://vt.tiktok.com/";
 
 export default async function(obj) {
-    const cookie = new Cookie({});
+    const cookie = getCookie('tiktok') ?? new Cookie({});
     let postId = obj.postId;
 
     if (!postId) {
